@@ -1,0 +1,607 @@
+{
+	"info": {
+		"_postman_id": "0d612f23-fb4d-4a03-ba6f-22c43966bed3",
+		"name": "talkRoom-express-render(w8-dev)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29835428"
+	},
+	"item": [
+		{
+			"name": "會員功能",
+			"item": [
+				{
+					"name": "GET取得user個人資料",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDM5ZTliYWY0ODg2ZmM0MTkzMzJjNyIsImlhdCI6MTcxNTcwNzU0NywiZXhwIjoxNzE2MzEyMzQ3fQ.-7hDOwQMCFQbmeO8z0iQ4msxve3FSftxrBUohUg0P00",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/users/profile",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST註冊user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Jack22\",\r\n    \"email\":\"12345@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/users/sign_up",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST登入user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDc4MzM1OGUxNjVhMWFhOWZiMjU3NiIsImlhdCI6MTcxNTk2MjY3NywiZXhwIjoxNzE2NTY3NDc3fQ.2KENcHP3tSfIklO5sRm9kWK-cSKcJK6s7Gmn_S6igXg",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"1@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/users/sign_in",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST重設user密碼",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDc4MzM1OGUxNjVhMWFhOWZiMjU3NiIsImlhdCI6MTcxNTk2MjY3NywiZXhwIjoxNzE2NTY3NDc3fQ.2KENcHP3tSfIklO5sRm9kWK-cSKcJK6s7Gmn_S6igXg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":\"23456789\",\r\n    \"confirmPassword\":\"23456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/users/updatePassword",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH更新user個人資料",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDQ3ZGVjMWVhMjRiNDhlNzRiZDE0ZSIsImlhdCI6MTcxNTc2NDcxNiwiZXhwIjoxNzE2MzY5NTE2fQ.ZCushhqFzEqzFQBnDGi6oXLXBowVkKOvRO1Q-EIsrM4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"photo\":\"www.@phtot.com.tw\",\r\n    \"name\":\"a11\",\r\n    \"sex\":\"female\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/users/profile",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "發文功能",
+			"item": [
+				{
+					"name": "GET取得post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/posts",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST新增單筆post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\":\"66373adb0f43a85a4e62da08\",\r\n    \"location\":\"台北市\",\r\n    \"type\":\"group\",\r\n    \"tags\":\"迷因\",\r\n    \"content\":\"我是測試資料\",\r\n    \"image\":\"http://dummyimage.com/197x100.png/dddddd/000000\",\r\n    \"likes\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/posts",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DEL刪除全部post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/posts",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DEL刪除指定post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/posts/662697cb6194ef0af47f9ab1",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"662697cb6194ef0af47f9ab1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH修改指定post",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\":\"6630ac10bd75de0e845aaf80\",\r\n    \"location\":\"台北市\",\r\n    \"type\":\"group\",\r\n    \"tags\":\"迷因\",\r\n    \"content\":\"我修改了~~\",\r\n    \"image\":\"http://dummyimage.com/197x100.png/dddddd/000000\",\r\n    \"likes\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/posts/66269ebe20481c1a7b2d7691",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"66269ebe20481c1a7b2d7691"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET取得post(排序,關鍵字)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/posts?timeSort=asc&keywords=修改",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "timeSort",
+									"value": "asc"
+								},
+								{
+									"key": "keywords",
+									"value": "修改"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DEL取消貼文讚",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwMzA4Zjg0Mzk5N2RkY2M5NDBiNiIsImlhdCI6MTcxNzE3NTA0OCwiZXhwIjoxNzE3Nzc5ODQ4fQ.rgvLpoDZKjmWlcWaEQs0MvsTRsNuPR4eztTlwt_c9Yc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/posts/664cb1703276ab52d3a83797/unlike",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"664cb1703276ab52d3a83797",
+								"unlike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST新增貼文讚",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwMzA4Zjg0Mzk5N2RkY2M5NDBiNiIsImlhdCI6MTcxNzE3NTA0OCwiZXhwIjoxNzE3Nzc5ODQ4fQ.rgvLpoDZKjmWlcWaEQs0MvsTRsNuPR4eztTlwt_c9Yc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/posts/664cb1703276ab52d3a83797/like",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"664cb1703276ab52d3a83797",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET取得個人所有貼文列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/posts/user/665a0308f843997ddcc940b6",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"user",
+								"665a0308f843997ddcc940b6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST新增一則貼文的留言",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwMzA4Zjg0Mzk5N2RkY2M5NDBiNiIsImlhdCI6MTcxNzE3NTA0OCwiZXhwIjoxNzE3Nzc5ODQ4fQ.rgvLpoDZKjmWlcWaEQs0MvsTRsNuPR4eztTlwt_c9Yc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\":\"好文啊~\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/posts/665a0387f843997ddcc940bb/comment",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"posts",
+								"665a0387f843997ddcc940bb",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "上傳圖片功能",
+			"item": [
+				{
+					"name": "POST上傳圖片",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NDc4MDBjNGM2MjdlNDk5OWY1OTI5YyIsImlhdCI6MTcxNTk2MTg2OCwiZXhwIjoxNzE2NTY2NjY4fQ.MWyhQUuSFresCX38quAYHPWVDA6nvQRal3lvnKaHgOs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/upload",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "會員按讚追蹤動態",
+			"item": [
+				{
+					"name": "GET取得個人按讚列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwMzA4Zjg0Mzk5N2RkY2M5NDBiNiIsImlhdCI6MTcxNzE3NTA0OCwiZXhwIjoxNzE3Nzc5ODQ4fQ.rgvLpoDZKjmWlcWaEQs0MvsTRsNuPR4eztTlwt_c9Yc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/users/getLikeList",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"getLikeList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET取得個人追蹤名單",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwMzA4Zjg0Mzk5N2RkY2M5NDBiNiIsImlhdCI6MTcxNzE3NTA0OCwiZXhwIjoxNzE3Nzc5ODQ4fQ.rgvLpoDZKjmWlcWaEQs0MvsTRsNuPR4eztTlwt_c9Yc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/users/following",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"following"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DEL取消追蹤朋友",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWI1NWRlYThkNDBiZTA2YThlNWE5MiIsImlhdCI6MTcxNzI2MTc5MCwiZXhwIjoxNzE3ODY2NTkwfQ.DrDBB6ewQ9kmTg1IIUco0nG5QbB8jXs1wwbpXITryo8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/users/665a0308f843997ddcc940b6/unfollow",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"665a0308f843997ddcc940b6",
+								"unfollow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST追蹤朋友",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWI1NWRlYThkNDBiZTA2YThlNWE5MiIsImlhdCI6MTcxNzI2MTc5MCwiZXhwIjoxNzE3ODY2NTkwfQ.DrDBB6ewQ9kmTg1IIUco0nG5QbB8jXs1wwbpXITryo8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://node-w8-2.onrender.com/users/665a0308f843997ddcc940b6/follow",
+							"protocol": "https",
+							"host": [
+								"node-w8-2",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"665a0308f843997ddcc940b6",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
