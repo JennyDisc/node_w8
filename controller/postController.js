@@ -174,14 +174,20 @@ const postController = {
         const post = req.params.id;
         // post collection 裡查無這筆 post id 時會回傳 null
         const postLikeCanDo = await Post.findById(post);
+        // post collection 裡查無這筆 user id 時會回傳 []
+        const likeState = await Post.find({ likes: req.user.id })
         if (postLikeCanDo !== null) {
-            // 更新該則貼文的likes欄位
-            const addLike = await Post.findOneAndUpdate(
-                { _id: post },
-                { $addToSet: { likes: user } },
-                { new: true, runValidators: true }
-            );
-            successHandle(res, addLike, null);
+            if (likeState.length !== 0) {
+                next(appError(401, '您已經按過讚'));
+            } else {
+                // 更新該則貼文的likes欄位
+                const addLike = await Post.findOneAndUpdate(
+                    { _id: post },
+                    { $addToSet: { likes: user } },
+                    { new: true, runValidators: true }
+                );
+                successHandle(res, addLike, null);
+            }
         } else {
             next(appError(400, '查無該筆貼文 id'));
         }
@@ -192,14 +198,21 @@ const postController = {
         const post = req.params.id;
         // post collection 裡查無這筆 post id 時會回傳 null
         const postLikeCanDo = await Post.findById(post);
+        // post collection 裡查無這筆 user id 時會回傳 []
+        const likeState = await Post.find({ likes: req.user.id })
+        console.log(likeState)
         if (postLikeCanDo !== null) {
-            const removeLike = await User.findOneAndUpdate(
-                // 更新該則貼文的likes欄位
-                { _id: post },
-                { $pull: { likes: user } },
-                { new: true, runValidators: true }
-            );
-            successHandle(res, removeLike, null);
+            if (likeState.length == 0) {
+                next(appError(401, '您尚未按過讚'));
+            } else {
+                const removeLike = await User.findOneAndUpdate(
+                    // 更新該則貼文的likes欄位
+                    { _id: post },
+                    { $pull: { likes: user } },
+                    { new: true, runValidators: true }
+                );
+                successHandle(res, removeLike, null);
+            }
         } else {
             next(appError(400, '查無該筆貼文 id'));
         }
