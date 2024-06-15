@@ -116,27 +116,34 @@ const userController = {
         if (req.params.id === req.user.id) {
             return next(appError(401, '您無法追蹤自己'));
         }
+        // users collection 裡查無要新增的這筆 userid 時會回傳 null
+        const isUserExist = await User.findById(req.params.id);
+        console.log(isUserExist)
         // 更新自己追蹤的部分
-        await User.updateOne(
-            {
-                _id: req.user.id,
-                'following.user': { $ne: req.params.id }
-            },
-            {
-                $addToSet: { following: { user: req.params.id } }
-            }
-        );
-        // 更新被追蹤者的部分
-        await User.updateOne(
-            {
-                _id: req.params.id,
-                'followers.user': { $ne: req.user.id }
-            },
-            {
-                $addToSet: { followers: { user: req.user.id } }
-            }
-        );
-        successHandle(res, null, '您已成功追蹤！');
+        if (isUserExist) {
+            await User.updateOne(
+                {
+                    _id: req.user.id,
+                    'following.user': { $ne: req.params.id }
+                },
+                {
+                    $addToSet: { following: { user: req.params.id } }
+                }
+            );
+            // 更新被追蹤者的部分
+            await User.updateOne(
+                {
+                    _id: req.params.id,
+                    'followers.user': { $ne: req.user.id }
+                },
+                {
+                    $addToSet: { followers: { user: req.user.id } }
+                }
+            );
+            successHandle(res, null, '您已成功追蹤！');
+        } else {
+            next(appError(400, '查無此用戶 id'));
+        };
     },
     // 取消追蹤
     async deleteUnfollow(req, res, next) {
@@ -144,23 +151,30 @@ const userController = {
         if (req.params.id === req.user.id) {
             return next(appError(401, '您無法取消追蹤自己'));
         }
-        await User.updateOne(
-            {
-                _id: req.user.id
-            },
-            {
-                $pull: { following: { user: req.params.id } }
-            }
-        );
-        await User.updateOne(
-            {
-                _id: req.params.id
-            },
-            {
-                $pull: { followers: { user: req.user.id } }
-            }
-        );
-        successHandle(res, null, '您已成功取消追蹤！');
+        // users collection 裡查無要新增的這筆 userid 時會回傳 null
+        const isUserExist = await User.findById(req.params.id);
+        console.log(isUserExist)
+        if (isUserExist) {
+            await User.updateOne(
+                {
+                    _id: req.user.id
+                },
+                {
+                    $pull: { following: { user: req.params.id } }
+                }
+            );
+            await User.updateOne(
+                {
+                    _id: req.params.id
+                },
+                {
+                    $pull: { followers: { user: req.user.id } }
+                }
+            );
+            successHandle(res, null, '您已成功取消追蹤！');
+        } else {
+            next(appError(400, '查無此用戶 id'));
+        };
     },
     // 取得個人的所有追蹤名單
     async getFollow(req, res, next) {

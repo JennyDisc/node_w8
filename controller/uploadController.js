@@ -43,7 +43,6 @@ const uploadController = {
 
         // 如果上傳過程中發生錯誤，會觸發 error 事件
         blobStream.on('error', (err) => {
-            console.log('hhh')
             next(appError(500, "上傳失敗"));
         });
 

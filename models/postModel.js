@@ -37,17 +37,16 @@ const postSchema = new mongoose.Schema(
             // select: false
         },
         // 寫法1
-        // likes: [{
-        //     type: mongoose.Schema.ObjectId,
-        //     ref: 'user',
-        //     // default: []
-        // }],
-        // 寫法2
-        likes: {
+        likes: [{
             type: mongoose.Schema.ObjectId,
             ref: 'user',
-            default: []
-        }
+        }],
+        // 寫法2
+        // likes: {
+        //     type: mongoose.Schema.ObjectId,
+        //     ref: 'user',
+        //     default: []
+        // }
     },
     {
         versionKey: false,

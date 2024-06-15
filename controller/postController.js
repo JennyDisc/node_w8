@@ -26,6 +26,22 @@ const postController = {
         }).sort(timeSortData);
         successHandle(res, allposts, null);
     },
+    async getPost(req, res, next) {
+        const id = req.params.id;
+        const getPost = await Post.findById(id);
+        if (getPost === null) {
+            next(appError(400, "找不到貼文"));
+        } else {
+            const onePost = await Post.findById(id).populate({
+                path: 'user',
+                select: 'name photo'
+            }).populate({
+                path: 'comments',
+                select: 'comment user'
+            });
+            successHandle(res, onePost, null);
+        }
+    },
     async postPosts(req, res, next) {
         const data = req.body;
         // users collection 裡查無要新增的這筆 user id 時會回傳 null
@@ -41,7 +57,7 @@ const postController = {
                         tags: data.tags,
                         content: data.content.trim(),
                         image: data.image,
-                        likes: data.likes
+                        // likes: data.likes
                     }
                 );
                 successHandle(res, newPost, null);
@@ -178,7 +194,7 @@ const postController = {
         const likeState = await Post.find({ likes: req.user.id })
         if (postLikeCanDo !== null) {
             if (likeState.length !== 0) {
-                next(appError(401, '您已經按過讚'));
+                next(appError(400, '您已經按過讚'));
             } else {
                 // 更新該則貼文的likes欄位
                 const addLike = await Post.findOneAndUpdate(
@@ -200,16 +216,15 @@ const postController = {
         const postLikeCanDo = await Post.findById(post);
         // post collection 裡查無這筆 user id 時會回傳 []
         const likeState = await Post.find({ likes: req.user.id })
-        console.log(likeState)
         if (postLikeCanDo !== null) {
             if (likeState.length == 0) {
                 next(appError(401, '您尚未按過讚'));
             } else {
-                const removeLike = await User.findOneAndUpdate(
+                const removeLike = await Post.findByIdAndUpdate(
                     // 更新該則貼文的likes欄位
                     { _id: post },
                     { $pull: { likes: user } },
-                    { new: true, runValidators: true }
+                    // { new: true, runValidators: true }
                 );
                 successHandle(res, removeLike, null);
             }

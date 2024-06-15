@@ -67,7 +67,11 @@ const resErrorDev = (err, res) => {
 
 // 處理錯誤(如程式撰寫錯誤、try catch 的 catch 錯誤)
 app.use(function (err, req, res, next) {
-    err.statusCode = err.statusCode || 500;
+    if (err.name === 'ValidationError' || err.message === 'File too large') {
+        err.statusCode = err.statusCode || 400;
+    } else {
+        err.statusCode = err.statusCode || 500;
+    }
     // 開發環境 development
     if (process.env.NODE_ENV === 'dev') {
         return resErrorDev(err, res);
@@ -84,7 +88,7 @@ app.use(function (err, req, res, next) {
         // mongoose 資料辨識錯誤
         err.message = "資料欄位未填寫正確，請重新輸入！";
         err.isOperational = true;
-        err.statusCode = err.statusCode || 400;
+        err.statusCode = 400;
         return resErrorProd(err, res)
     }
     // SyntaxError 資料格式錯誤
@@ -98,6 +102,7 @@ app.use(function (err, req, res, next) {
     else if (err.message === 'File too large') {
         err.message = "圖片檔案不得超過2MB";
         err.isOperational = true;
+        err.statusCode = 400;
         return resErrorProd(err, res)
     }
     resErrorProd(err, res)
