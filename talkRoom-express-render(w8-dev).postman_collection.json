@@ -234,7 +234,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\":\"664cb1473276ab52d3a83793\",\r\n    \"location\":\"台北市\",\r\n    \"type\":\"group\",\r\n    \"tags\":\"迷因\",\r\n    \"content\":\"我是測試資料\",\r\n    \"image\":\"http://dummyimage.com/197x100.png/dddddd/000000\"\r\n}",
+							"raw": "{\r\n    \"location\":\"台北市\",\r\n    \"type\":\"group\",\r\n    \"tags\":\"迷因\",\r\n    \"content\":\"我是測試資料\",\r\n    \"image\":\"http://dummyimage.com/197x100.png/dddddd/000000\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -36,17 +36,10 @@ const postSchema = new mongoose.Schema(
             default: Date.now,
             // select: false
         },
-        // 寫法1
         likes: [{
             type: mongoose.Schema.ObjectId,
             ref: 'user',
         }],
-        // 寫法2
-        // likes: {
-        //     type: mongoose.Schema.ObjectId,
-        //     ref: 'user',
-        //     default: []
-        // }
     },
     {
         versionKey: false,
@@ -58,7 +51,6 @@ const postSchema = new mongoose.Schema(
 
 // 虛擬欄位 comments
 postSchema.virtual('comments', {
-    // Comment?
     ref: 'comment',
     foreignField: 'post',
     localField: '_id'

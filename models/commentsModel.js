@@ -12,7 +12,6 @@ const commentSchema = new mongoose.Schema(
         },
         user: {
             type: mongoose.Schema.ObjectId,
-            // User?
             ref: 'user',
             require: ['true', 'user must belong to a post.']
         },

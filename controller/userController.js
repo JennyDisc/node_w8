@@ -118,7 +118,6 @@ const userController = {
         }
         // users collection 裡查無要新增的這筆 userid 時會回傳 null
         const isUserExist = await User.findById(req.params.id);
-        console.log(isUserExist)
         // 更新自己追蹤的部分
         if (isUserExist) {
             await User.updateOne(
@@ -153,7 +152,6 @@ const userController = {
         }
         // users collection 裡查無要新增的這筆 userid 時會回傳 null
         const isUserExist = await User.findById(req.params.id);
-        console.log(isUserExist)
         if (isUserExist) {
             await User.updateOne(
                 {
