@@ -46,6 +46,8 @@ const postSchema = new mongoose.Schema(
         // 虛擬欄位
         toJSON: { virtuals: true },
         toObject: { virtuals: true },
+        // 移除使用 toJSON 和 toObject 轉換格式，轉換過程中產生的 id 欄位
+        id: false,
     }
 );
 
